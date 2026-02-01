@@ -15,35 +15,35 @@ jobs:
   creating_bucket:
     runs-on: ubuntu-latest
     steps:
-       - name: Checkout Repository
-       - uses: actions/checkout@v4
+      - name: Checkout Repository
+      - uses: actions/checkout@v4
 
-       - name: Configure AWS Credentials
-         uses: aws-actions/configure-aws-credentials@v5.1.1
-         with:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v5.1.1
+        with:
            aws-region: us-east-1
            role-to-assume: ${{secrets.IAM_ROLE}}
 
-       - name: Install Terraform
-         uses: hashicorp/setup-terraform@v3   
+      - name: Install Terraform
+        uses: hashicorp/setup-terraform@v3   
 
-       - name: Initialize Terraform 
-         run: terraform init
-         working-directory: terraform
+      - name: Initialize Terraform 
+        run: terraform init
+        working-directory: terraform
 
-       - name: Terraform plan
-         env: 
+      - name: Terraform plan
+        env: 
            BUCKET_NAME: ${{ secrets.BUCKET_NAME}}
-         run:  |
+        run:  |
            terraform plan \
              -var="bucket_name=$BUCKET_NAME"
-         working-directory: terraform
+        working-directory: terraform
          
-       - name: Terraform apply
-         env:
-          TF_VAR_bucket_name: ${{ secrets.BUCKET_NAME }}
-         run: terraform apply -auto-approve
-         working-directory: terraform  
+      - name: Terraform apply
+        env:
+         TF_VAR_bucket_name: ${{ secrets.BUCKET_NAME }}
+        run: terraform apply -auto-approve
+        working-directory: terraform  
 
       
 
