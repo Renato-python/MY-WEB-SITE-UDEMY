@@ -13,6 +13,6 @@ terraform {
     region         = "us-east-1"
     key            = "github-actions/terraform.tfstate"
     encrypt        = true
-    dynamodb_table = "tf-resouces-gha-lock"
+    dynamodb_table = "tf-resources-gha-lock"
   }
 }
