@@ -1,4 +1,4 @@
 variable "bucket_name" {
-  description = "web-site-git-action"
+  description = "my-bucket_2026"
   type = string
 }
