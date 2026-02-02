@@ -1,4 +1,4 @@
 variable "bucket_name" {
-  description = "This is my bucket name"
+  description = "my-web-site-2026"
   type        = string
 }
